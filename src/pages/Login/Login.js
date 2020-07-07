@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 function Login() {
+    const history = useHistory();
     const [userLogin, setUserLogin] = useState({
-        email: '',
-        password: '',
+        email: "",
+        password: "",
     });
 
     const handleChange = (event) => {
@@ -14,29 +16,32 @@ function Login() {
     };
 
     const handleSubmit = (event) => {
-        localStorage.setItem('user', JSON.stringify(userLogin));
+        event.preventDefault();
+
+        localStorage.setItem("user", JSON.stringify(userLogin));
+        history.push("/pokemons");
     };
 
     return (
         <div>
             <form onSubmit={handleSubmit}>
                 <input
-                    type='text'
-                    name='email'
-                    id='email'
+                    type="text"
+                    name="email"
+                    id="email"
                     value={userLogin.email}
                     onChange={handleChange}
-                    placeholder='Email'
+                    placeholder="Email"
                 />
                 <input
-                    type='password'
-                    name='password'
-                    id='password'
+                    type="password"
+                    name="password"
+                    id="password"
                     value={userLogin.password}
                     onChange={handleChange}
-                    placeholder='Password'
+                    placeholder="Password"
                 />
-                <input type='submit' value='Login' />
+                <input type="submit" value="Login" />
             </form>
         </div>
     );
