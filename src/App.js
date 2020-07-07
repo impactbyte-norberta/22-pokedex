@@ -14,7 +14,7 @@ function App() {
                     <Login />
                 </Route>
 
-                <PrivateRoute>
+                <PrivateRoute path='/pokemons'>
                     <Pokemons />
                 </PrivateRoute>
             </Switch>
