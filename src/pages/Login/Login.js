@@ -1,5 +1,19 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import styled from "styled-components";
+
+const Form = styled.div`
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & form input {
+        font-size: 20px;
+        margin: 5px 0;
+        padding: 5px;
+    }
+`;
 
 function Login() {
     const history = useHistory();
@@ -23,27 +37,33 @@ function Login() {
     };
 
     return (
-        <div>
+        <Form>
             <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    name="email"
-                    id="email"
-                    value={userLogin.email}
-                    onChange={handleChange}
-                    placeholder="Email"
-                />
-                <input
-                    type="password"
-                    name="password"
-                    id="password"
-                    value={userLogin.password}
-                    onChange={handleChange}
-                    placeholder="Password"
-                />
-                <input type="submit" value="Login" />
+                <div>
+                    <input
+                        type="text"
+                        name="email"
+                        id="email"
+                        value={userLogin.email}
+                        onChange={handleChange}
+                        placeholder="Email"
+                    />
+                </div>
+                <div>
+                    <input
+                        type="password"
+                        name="password"
+                        id="password"
+                        value={userLogin.password}
+                        onChange={handleChange}
+                        placeholder="Password"
+                    />
+                </div>
+                <div style={{ textAlign: "center" }}>
+                    <input type="submit" value="Login" />
+                </div>
             </form>
-        </div>
+        </Form>
     );
 }
 
