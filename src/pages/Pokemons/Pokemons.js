@@ -24,7 +24,7 @@ function Pokemons() {
     const [pokemons, setPokemon] = useState({});
 
     async function fetchPokemon() {
-        let url = "https://pokeapi.co/api/v2/pokemon";
+        let url = "https://pokeapi.co/api/v2/pokemon?offset=40&limit=100";
 
         let response = await fetch(url);
         let results = await response.json();
@@ -38,6 +38,7 @@ function Pokemons() {
         // disable-next-line
     }, []);
 
+    console.log(pokemons.results);
     return (
         <div>
             <CardList>
@@ -47,7 +48,7 @@ function Pokemons() {
 
                         return (
                             <Card key={id}>
-                                <Link to={`/pokemon/${id}`}>
+                                <Link to={`/pokemons/${pokemon.name}`}>
                                     <img
                                         src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${id}.png`}
                                         alt="pokeimage"
