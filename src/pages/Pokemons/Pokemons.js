@@ -16,6 +16,10 @@ const Card = styled.div`
     }
 `;
 
+const Title = styled.h4`
+    text-align: center;
+`;
+
 function Pokemons() {
     const [pokemons, setPokemon] = useState({});
 
@@ -38,7 +42,7 @@ function Pokemons() {
         <div>
             <CardList>
                 {pokemons.results !== undefined &&
-                    pokemons.results.map((pokemon, index) => {
+                    pokemons.results.map((pokemon) => {
                         const id = pokemon.url.split("/")[6];
 
                         return (
@@ -49,7 +53,7 @@ function Pokemons() {
                                         alt="pokeimage"
                                     />
                                 </Link>
-                                <h4>{pokemon.name}</h4>
+                                <Title>{pokemon.name}</Title>
                             </Card>
                         );
                     })}
