@@ -24,7 +24,7 @@ function Pokemons() {
         <div>
             {pokemons.results !== undefined &&
                 pokemons.results.map((pokemon, index) => (
-                    <Link to={`/pokemon/${pokemon.name}`}>
+                    <Link to={`/pokemons/${pokemon.name}`}>
                         <div>
                             <img
                                 src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${

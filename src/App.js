@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Login from './pages/Login/Login';
 import Pokemons from './pages/Pokemons/Pokemons';
+import PokemonDetails from './pages/PokemonDetails/PokemonDetails';
 
 import PrivateRoute from './helpers/PrivateRoute';
 
@@ -10,12 +11,16 @@ function App() {
     return (
         <Router>
             <Switch>
-                <Route path='/login'>
+                <Route exact path='/login'>
                     <Login />
                 </Route>
 
-                <PrivateRoute path='/pokemons'>
+                <PrivateRoute exact path='/pokemons'>
                     <Pokemons />
+                </PrivateRoute>
+
+                <PrivateRoute exact path='/pokemons/:name'>
+                    <Route children={PokemonDetails} />
                 </PrivateRoute>
             </Switch>
         </Router>
