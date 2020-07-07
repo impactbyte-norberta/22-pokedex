@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function Pokemons() {
     const [pokemons, setPokemon] = useState({});
@@ -23,12 +24,17 @@ function Pokemons() {
         <div>
             {pokemons.results !== undefined &&
                 pokemons.results.map((pokemon, index) => (
-                    <img
-                        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${
-                            index + 1
-                        }.png`}
-                        alt='pokeimage'
-                    />
+                    <Link to={`/pokemon/${pokemon.name}`}>
+                        <div>
+                            <img
+                                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${
+                                    index + 1
+                                }.png`}
+                                alt='pokeimage'
+                            />
+                            <h1>{pokemon.name}</h1>
+                        </div>
+                    </Link>
                 ))}
         </div>
     );
